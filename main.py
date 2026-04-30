@@ -1,3 +1,11 @@
+# 이모지 제거한 안전한 파일명
+pages/
+├── 1_main.py
+├── 2_data_explore.py
+├── 3_preprocessing.py
+├── 4_model.py
+└── 5_results.py
+
 import streamlit as st
 
 st.set_page_config(
