@@ -1,4 +1,5 @@
 import streamlit as st
+from pathlib import Path
 
 st.set_page_config(
     page_title="DCX - 이탈 고객 방지",
@@ -26,19 +27,27 @@ for key, val in defaults.items():
     if key not in st.session_state:
         st.session_state[key] = val
 
-# 페이지 정의
+# 현재 파일 기준 절대경로 설정
+BASE_DIR = Path(__file__).parent
+
 pages = {
     "📊 DCX 이탈 고객 방지": [
-        st.Page("pages/1_main.py",       title="🏠 메인",          icon="🏠"),
-        st.Page("pages/2_explore.py",    title="🔍 데이터 탐색",    icon="🔍"),
-        st.Page("pages/3_preprocess.py", title="⚙️ 데이터 전처리",  icon="⚙️"),
-        st.Page("pages/4_model.py",      title="🤖 연구 모형",      icon="🤖"),
-        st.Page("pages/5_results.py",    title="📈 연구 결과",      icon="📈"),
+        st.Page(str(BASE_DIR / "pages" / "1_main.py"),
+                title="🏠 메인",          icon="🏠"),
+        st.Page(str(BASE_DIR / "pages" / "2_explore.py"),
+                title="🔍 데이터 탐색",    icon="🔍"),
+        st.Page(str(BASE_DIR / "pages" / "3_preprocess.py"),
+                title="⚙️ 데이터 전처리",  icon="⚙️"),
+        st.Page(str(BASE_DIR / "pages" / "4_model.py"),
+                title="🤖 연구 모형",      icon="🤖"),
+        st.Page(str(BASE_DIR / "pages" / "5_results.py"),
+                title="📈 연구 결과",      icon="📈"),
     ]
 }
 
 pg = st.navigation(pages)
 pg.run()
+
 import streamlit as st
 import pandas as pd
 import numpy as np
